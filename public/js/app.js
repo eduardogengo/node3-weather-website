@@ -1,7 +1,3 @@
-// import { response } from "express"
-
-console.log('loading client side js file')
-
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
