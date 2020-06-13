@@ -2,6 +2,7 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const messageThree = document.querySelector('#message-3')
 
 
 
@@ -10,6 +11,7 @@ weatherForm.addEventListener('submit', (e) => {
     const location = search.value
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
+    messageThree.textContent = ''
     fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
             if (data.error) {
@@ -17,6 +19,8 @@ weatherForm.addEventListener('submit', (e) => {
             } else {
                 messageOne.textContent = data.location
                 messageTwo.textContent = data.forecast
+                messageThree.textContent = `A temperatura é ${data.temperature} e a sensação térmica é de ${data.feelslike}. Velocidade do vento: ${data.wind_speed}
+                Índice UV = ${data.uv_index}`
             }
         })
     })

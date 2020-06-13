@@ -11,12 +11,14 @@ const forecast = (latitude, longitude, callback) => {
         } else {
             const data = body
             const current = data.current
-            
+
             callback(undefined, {
                 description:current.weather_descriptions[0],
                 temperature:current.temperature,
                 feelslike:current.feelslike,
-                location:`${data.location.name} / ${data.location.region} / ${data.location.country}`
+                location:`${data.location.name} / ${data.location.region} / ${data.location.country}`,
+                wind_speed: current.wind_speed,
+                uv_index: current.uv_index
             })
             // console.log(`${current.weather_descriptions[0]}. It is currently ${current.temperature} degrees out, but it feels like ${current.feelslike}, degrees`)
         }
